@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tooltip ao passar o mouse sobre um botão</title>
+    <style>
+        /* Estilo do balão (tooltip) */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip-text {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            z-index: 1;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Mostrar o balão quando o mouse passa sobre o botão */
+        .tooltip:hover .tooltip-text {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <p>Passe o mouse sobre o botão para ver o balão:</p>
+
+    <div class="tooltip">
+        <button>Botão</button>
+        <span class="tooltip-text">Texto do balão</span>
+    </div>
+</body>
+</html>
