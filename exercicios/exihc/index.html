@@ -3,26 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML com Rótulos e Imagens</title>
-    <meta name="author" content="Proj.Fábio">
-    <meta name="copyrigth" content="PI/IHC">
-    <meta name="keywords" content="HTML">
+    <title>Calculadora</title>
     <style type="text/css">
-        h1.primeiro{
-            color: blue;
+        body{
+            background-color: rgb(252, 232, 202);
         }
-        h1.segundo{
-            color: red;
+        #cal{
+            background-color: rgb(255, 255, 255);
+            position: center;
+            height: 300px;
+            width: 600px;
+            border-radius: 15px;
+            border: 2px solid rgb(180, 125, 74);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px;
+           
         }
+        div{
+            margin-left: 10px;
+        }
+        input{
+            width: 60px;
 
+        }
+        .itens{
+            margin-top: 10px;
+            
+        }
+        .radio{
+            width: 20px;
+        }
+        
     </style>
-</head>
-<body bgcolor="lightgray">
-    <h1 align="center"class="primeiro">Bem vindo</h1>
-    <p><center><img src="" alt="TV" width="100" height="100"></center></p>
-   <h1>Ceja a programaçao de hj</h1>
-   <h1 align="rigth" class="segundo"><img src="" alt="TV" width="100" height="100">Nao deixe sua tv assim</h1>
+    <script type="text/javascript">
 
-       
+        function calcula(){
+            var valido = document.getElementById("valor").value;
+            try {
+        
+            if(valido == ""){
+                alert("preencha o valor");
+                throw "vazio!";
+            }
+            if(isNaN(valido)){
+                alert("preencha com um numero");
+                throw "texto!";
+            }
+            else{
+                valido = Number(valido);
+                var opcao1= document.getElementById("des");
+                var estado1= opcao1.checked;
+
+                if(estado1 == true){
+                    var opcao2 = document.getElementById("10");
+                    var estado2 = opcao2.checked;
+
+                    if(estado2 == true){
+                        document.getElementById("res").value = valido - valido * 0.1;
+                    }
+                    else{
+                        var opcao2 = document.getElementById("20");
+                        var estado2 = opcao2.checked;
+
+                        if(estado2 == true){
+                            document.getElementById("res").value = valido - valido * 0.2;
+                        }
+                        else{
+                            var opcao2 = document.getElementById("30");
+                            var estado2 = opcao2.checked;
+
+                            if(estado2 == true)
+                                document.getElementById("res").value = valido - valido * 0.3;
+                        }
+                    }
+
+
+                }
+                else{
+                    var opcao1= document.getElementById("jur");
+                    var estado1= opcao1.checked;
+
+                    if(estado1 == true){
+                        var opcao2 = document.getElementById("10");
+                        var estado2 = opcao2.checked;
+
+                    if(estado2 == true){
+                        document.getElementById("res").value = valido + valido * 0.1;
+                    }
+                    else{
+                        var opcao2 = document.getElementById("20");
+                        var estado2 = opcao2.checked;
+
+                        if(estado2 == true){
+                            document.getElementById("res").value = valido + valido * 0.2;
+                        }
+                        else{
+                            var opcao2 = document.getElementById("30");
+                            var estado2 = opcao2.checked;
+
+                            if(estado2 == true)
+                                document.getElementById("res").value = valido + valido * 0.3;
+                        }
+                    }
+                }
+
+
+                }
+            }
+        }
+            catch(err) {
+                document.getElementById("porcentagem").value = "Erro: " + err;
+            }
+
+
+        }
+
+    </script>
+</head>
+<body>
+    <div id="cal">
+        <h2>GUI com Botões de Rádio</h2>
+        <div class="itens">
+            <label>Digite o Valor:</label> 
+            <input type="text" id="valor"> 
+            <label> Cálculo com:</label> 
+            <input type="radio" class="radio" id="des" value="des" onchange="calcula()" name="rad1">Desconto 
+            <input type="radio" class="radio" id="jur" value="jur" onchange="calcula()" name="rad1">Juros
+        </div>
+        <div class="itens">
+            <input type="radio" class="radio" id="10" value="10" onchange="calcula()" name="rad2">10% do valor 
+            <input type="radio" class="radio" id="20" value="20" onchange="calcula()" name="rad2">20% do valor 
+            <input type="radio" class="radio" id="30" value="30" onchange="calcula()" name="rad2"> 30% do valor
+        </div>
+        <div class="itens"><label>Valor final:</label> <input type="text" id="res" class="res" readonly></div>
+    
+    </div>
+
 </body>
 </html>
